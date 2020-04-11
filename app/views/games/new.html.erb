@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Game Longest Word</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <h1 class="text-center pt-4">New Game</h1>
+
+  <div class="d-flex flex-row justify-content-center">
+    <%@game_letters.each do |letter|%>
+      <h2 class="p-3 m-3 text-info text-center align-center border border-info"><%=letter%></h2>
+    <%end%>
+  </div>
+
+   <form action="/score" method="post" class="d-flex flex-row justify-content-center align-items-center form-inline text-center">
+    <div class="input-group input-group-lg d-flex align-items-center">
+      <input type="text" name="word" class="form-control" placeholder="Enter your word here...">
+      <span class="input-group-btn">
+        <input type="submit" value="Play" class="btn btn-primary ml-3">
+      </span>
+    </div>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :letters, @game_letters %>
+  </form>
+
+</body>
+</html>
+
